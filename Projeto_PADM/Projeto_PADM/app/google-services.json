@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "111983031751",
+    "firebase_url": "https://projetopadm-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "projetopadm",
+    "storage_bucket": "projetopadm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111983031751:android:68266cdfc420b4699f95e2",
+        "android_client_info": {
+          "package_name": "com.example.projeto_padm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzyySK2c6o_Ii_2uP4XTDQ-coujTXAOhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
