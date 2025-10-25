@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -20,7 +18,7 @@ import com.example.projeto_padm.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    // --- Elementos ---
+    // --- UI Elements ---
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private TextView dashboard_lbl;
@@ -29,77 +27,73 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // --- Ligação ao layout (View Binding) ---
+        // --- View Binding setup ---
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // --- Definir a toolbar (barra superior) ---
+        // --- Toolbar setup ---
         setSupportActionBar(binding.appBarMain.toolbar);
 
-        // --- Ação do botão flutuante (FAB) ---
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Aqui vamos adicionar um novo treino", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab)
-                        .show();
-            }
-        });
-
-        // --- Configuração do DrawerLayout (menu lateral) ---
+        // --- DrawerLayout and NavigationView setup ---
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
-        // --- Configuração das opções do menu (destinos principais) ---
+        // --- Top-level destinations (main menu options) ---
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow,
+                R.id.nav_settings
+        )
                 .setOpenableLayout(drawer)
                 .build();
 
-        // --- Configurar a navegação (ligação entre menu e fragmentos) ---
+        // --- Navigation setup ---
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // --- Ligação do TextView principal do dashboard ---
+        // --- Dashboard label ---
         dashboard_lbl = findViewById(R.id.dashboard_lbl);
 
         // ============================================================
-        // ============ Mostrar nome e email do utilizador ============
+        // ============ Display user name and email in menu ===========
         // ============================================================
 
-        // Aceder ao header (parte superior) do NavigationView
+        // Access the header (top part) of the NavigationView
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.main_lbl_userName);
         TextView userEmailTextView = headerView.findViewById(R.id.main_lbl_userEmail);
 
-        // Ler os dados do utilizador guardados nas SharedPreferences
+        // Retrieve user data from SharedPreferences
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String userName = prefs.getString("userNome", "Nome do Utilizador");
         String userEmail = prefs.getString("userEmail", "email@exemplo.com");
+        long userId = prefs.getLong("userId", -1);  // ✅ fixed type
 
-        // Mostrar as informações no cabeçalho do menu lateral
+
+
+        // Display user info in the navigation drawer header
         userNameTextView.setText(userName);
         userEmailTextView.setText(userEmail);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Expande o menu (adiciona os itens à barra superior, se existir)
+        // Inflate the menu (adds items to the app bar, if present)
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        // Garante que o botão de navegação (←) funciona corretamente
+        // Ensure navigation works properly with the back arrow (←)
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
 
-    // --- Atualiza o texto do label principal do dashboard ---
+    // --- Example method: updates dashboard label text ---
     protected void changeString() {
         dashboard_lbl.setText(R.string.lbl_main_ultimoTreino);
     }
