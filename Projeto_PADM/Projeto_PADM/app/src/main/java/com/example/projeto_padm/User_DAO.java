@@ -25,6 +25,10 @@ public interface User_DAO {
     @Query("SELECT * FROM user_tabela WHERE email = :email AND password = :password LIMIT 1")
     User login(String email, String password);
 
+    @Query("SELECT * FROM user_tabela WHERE id = :id LIMIT 1")
+    User getUserById(long id);
+
+
 
 
 }

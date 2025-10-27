@@ -5,9 +5,6 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
-import java.sql.Time;
-import java.util.Date;
-
 @Entity(
         tableName = "treino_tabela",
         foreignKeys = {
@@ -58,17 +55,17 @@ public class Treino {
     private long tipoTreinoId;
 
     @ColumnInfo(index = true)
-    private long percursoId;
+    private Long percursoId;
 
     @ColumnInfo(index = true)
     private long userId;
 
-    private double distanciaPercorrida,velocidadeMedia;
-    private String tempo, hora_inicio, hora_fim,data;
+    private double distanciaPercorrida, velocidadeMedia;
+    private String tempo, hora_inicio, hora_fim, data;
     private int calorias;
 
     // Constructor
-    public Treino(long ambienteId, long categoriaId, long tipoTreinoId, long percursoId, long userId,
+    public Treino(long ambienteId, long categoriaId, long tipoTreinoId, Long percursoId, long userId,
                   double distanciaPercorrida, String tempo, double velocidadeMedia, int calorias,
                   String data, String hora_inicio, String hora_fim) {
         this.ambienteId = ambienteId;
@@ -100,8 +97,8 @@ public class Treino {
     public long getTipoTreinoId() { return tipoTreinoId; }
     public void setTipoTreinoId(long tipoTreinoId) { this.tipoTreinoId = tipoTreinoId; }
 
-    public long getPercursoId() { return percursoId; }
-    public void setPercursoId(long percursoId) { this.percursoId = percursoId; }
+    public Long getPercursoId() { return percursoId; }
+    public void setPercursoId(Long percursoId) { this.percursoId = percursoId; }
 
     public long getUserId() { return userId; }
     public void setUserId(long userId) { this.userId = userId; }

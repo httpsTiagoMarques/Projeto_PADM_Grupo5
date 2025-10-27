@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.RoomWarnings;
 import androidx.room.Update;
 
 import java.util.List;
@@ -20,12 +21,18 @@ public interface Treino_DAO {
     @Delete
     int delete(Treino treino);
 
-    // Get all Treinos from a specific user
-    @Query("SELECT * FROM treino_tabela WHERE userId = :userId")
+    //  Obter todos os treinos de um utilizador
+    @Query("SELECT * FROM treino_tabela WHERE userId = :userId ORDER BY id DESC")
     List<Treino> getAllTreinos(long userId);
 
-    //Treino mais recente
-    // Get all Treinos from a specific user
+
+
+
+    //  Obter um treino específico pelo ID (Update GalleryFragment)
+    @Query("SELECT * FROM treino_tabela WHERE id = :treinoId LIMIT 1")
+    Treino getTreinoById(long treinoId);
+
+    //  Obter o treino mais recente de um utilizador (HomeFragment)
     @Query("SELECT c.nome AS nomeCategoria, " +
             "t.calorias AS calorias, " +
             "t.tempo AS tempo, " +
@@ -34,10 +41,7 @@ public interface Treino_DAO {
             "FROM treino_tabela t " +
             "INNER JOIN categoria_tabela c ON t.categoriaId = c.id " +
             "WHERE t.userId = :userId " +
-            "ORDER BY t.data DESC " +
+            "ORDER BY t.id DESC " +
             "LIMIT 1")
     UltimoTreinoInfo getUltimoTreino(long userId);
-
-
-
 }
