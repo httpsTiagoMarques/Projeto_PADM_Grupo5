@@ -10,6 +10,7 @@ import java.util.List;
 
 @Dao
 public interface Categoria_DAO {
+
     @Insert
     long insert(Categoria categoria);
 
@@ -22,7 +23,7 @@ public interface Categoria_DAO {
     @Query("SELECT * FROM categoria_tabela")
     List<Categoria> getAllCategories();
 
-
-
-
+    // Metodo adicionado para permitir buscar categoria por ID
+    @Query("SELECT * FROM categoria_tabela WHERE id = :id LIMIT 1")
+    Categoria getCategoriaById(long id);
 }
