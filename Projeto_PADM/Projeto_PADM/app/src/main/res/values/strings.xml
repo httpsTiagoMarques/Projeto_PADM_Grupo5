@@ -27,6 +27,8 @@
     <!-- Main -->
     <string name="lbl_main_empty">Ainda não registou nenhum treino</string>
     <string name="lbl_main_ultimoTreino">Resumo do ultimo treino</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
