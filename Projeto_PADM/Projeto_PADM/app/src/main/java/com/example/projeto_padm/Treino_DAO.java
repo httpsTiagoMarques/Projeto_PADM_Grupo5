@@ -26,9 +26,24 @@ public interface Treino_DAO {
     List<Treino> getAllTreinos(long userId);
 
 
+    //  Obter os detalhes de um treino
+    @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
+    @Query("SELECT t.*, " +
+            "c.nome AS categoriaNome, " +
+            "tp.nome AS tipoNome, " +
+            "a.nome AS ambienteNome, " +
+            "p.nome AS percursoNome " +
+            "FROM treino_tabela t " +
+            "INNER JOIN categoria_tabela c ON t.categoriaId = c.id " +
+            "INNER JOIN tipoTreino_tabela tp ON t.tipoTreinoId = tp.id " +
+            "INNER JOIN ambiente_tabela a ON t.ambienteId = a.id " +
+            "LEFT JOIN percurso_tabela p ON t.percursoId = p.id " +
+            "WHERE t.userId = :userId " +
+            "ORDER BY t.id DESC")
+    List<TreinoComDetalhes> getAllTreinosDetail(long userId);
 
 
-    //  Obter um treino específico pelo ID (Update GalleryFragment)
+    //  Obter um treino especÃ­fico pelo ID (Update GalleryFragment)
     @Query("SELECT * FROM treino_tabela WHERE id = :treinoId LIMIT 1")
     Treino getTreinoById(long treinoId);
 
