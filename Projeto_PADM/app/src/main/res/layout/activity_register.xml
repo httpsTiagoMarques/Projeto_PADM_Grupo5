@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout do ecrã de registo.
+    Este ecrã permite ao utilizador criar uma nova conta introduzindo
+    os seus dados pessoais e uma fotografia de perfil.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/register_Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.1"
+        android:text="@string/register_titulo"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Imagem -->
+    <ImageView
+        android:id="@+id/register_imageView"
+        android:layout_width="103dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_Titulo"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <!-- Botão Upload -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_Upload"
+        android:layout_width="94dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:text="Upload"
+        android:textColor="@color/salmon"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_imageView"
+        app:strokeColor="@color/salmon"
+        app:strokeWidth="2dp" />
+
+    <!-- Label Nome -->
+    <TextView
+        android:id="@+id/register_lbl_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Nome:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_Upload" />
+
+    <!-- Campo Nome -->
+    <EditText
+        android:id="@+id/register_nome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_nome" />
+
+    <!-- Label Idade -->
+    <TextView
+        android:id="@+id/register_lbl_idade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Idade:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_nome" />
+
+    <!-- Campo Idade -->
+    <EditText
+        android:id="@+id/register_idade"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="number"
+        android:padding="12dp"
+        app:layout_constraintEnd_toStartOf="@id/register_sexo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_idade" />
+
+    <!-- Label Sexo -->
+    <TextView
+        android:id="@+id/register_lbl_sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
+        android:text="Sexo:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/register_lbl_idade"
+        app:layout_constraintTop_toBottomOf="@id/register_nome" />
+
+    <!-- Campo Sexo -->
+    <Spinner
+        android:id="@+id/register_sexo"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/login_edittext_background"
+        android:entries="@array/sexo_opcoes"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/register_idade"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_sexo" />
+
+    <!-- Label Peso -->
+    <TextView
+        android:id="@+id/register_lbl_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Peso:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_idade" />
+
+    <!-- Campo Peso -->
+    <EditText
+        android:id="@+id/register_peso"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toStartOf="@id/register_altura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_peso" />
+
+    <!-- Label Altura -->
+    <TextView
+        android:id="@+id/register_lbl_altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
+        android:text="Altura:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/register_lbl_peso"
+        app:layout_constraintTop_toBottomOf="@id/register_sexo" />
+
+    <!-- Campo Altura -->
+    <EditText
+        android:id="@+id/register_altura"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/register_peso"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_altura" />
+
+    <!-- Label Email -->
+    <TextView
+        android:id="@+id/register_lbl_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Email:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_peso" />
+
+    <!-- Campo Email -->
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_email" />
+
+    <!-- Label Password -->
+    <TextView
+        android:id="@+id/register_lbl_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Password:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_email" />
+
+    <!-- Campo Password -->
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/login_edittext_background"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_lbl_password" />
+
+    <!-- Botão cancelar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btnCancel"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Cancelar"
+        android:textColor="@color/salmon"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="20dp"
+        app:strokeColor="@color/salmon"
+        app:strokeWidth="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/register_btnRegister"
+        app:layout_constraintTop_toBottomOf="@id/register_password" />
+
+    <!-- Botão registar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Register"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/salmon"
+        app:cornerRadius="30dp"
+        app:strokeColor="@color/salmon"
+        app:strokeWidth="2dp"
+        app:layout_constraintStart_toEndOf="@id/register_btnCancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

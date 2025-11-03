@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout do fragmento SlideshowFragment.
+    Exibe a lista de treinos realizados pelo utilizador através de um RecyclerView.
+    Caso o utilizador ainda não tenha realizado nenhum treino, mostra uma mensagem informativa.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.slideshow.SlideshowFragment"
+    android:padding="16dp">
+
+    <!-- Texto exibido quando não há treinos registrados -->
+    <TextView
+        android:id="@+id/textNoTreinos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ainda não realizou nenhum treino."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="#888888"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Lista de treinos realizados (RecyclerView) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTreinos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

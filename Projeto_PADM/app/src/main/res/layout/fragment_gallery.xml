@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout do fragmento responsável por iniciar, pausar e terminar treinos.
+    Aqui o utilizador escolhe a categoria, ambiente, tipo de treino e percurso
+    antes de iniciar a atividade.
+    Também contém os botões de controlo e mensagens informativas.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@android:color/white"
+    tools:context=".ui.gallery.GalleryFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pronto/a para começar um novo treino?"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center" />
+
+        <!-- Cards de Categoria -->
+        <LinearLayout
+            android:id="@+id/layout_categorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/text_title">
+
+            <!-- Categoria 1 (ex: Caminhada) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_categoria1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icon_categoria1"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/treino_walk" />
+
+                    <TextView
+                        android:id="@+id/text_categoria1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Categoria 2 (ex: Corrida) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_categoria2"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icon_categoria2"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/treino_run" />
+
+                    <TextView
+                        android:id="@+id/text_categoria2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Categoria 3 (ex: Ciclismo) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_categoria3"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/icon_categoria3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/treino_cycling" />
+
+                    <TextView
+                        android:id="@+id/text_categoria3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Secção com spinners de seleção -->
+        <LinearLayout
+            android:id="@+id/spinner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_categorias"
+            android:gravity="center_horizontal">
+
+            <!-- Primeira linha: ambiente e tipo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <!-- Spinner de ambiente -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/label_ambiente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ambiente"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="16sp"
+                        android:gravity="start" />
+
+                    <Spinner
+                        android:id="@+id/spinner_ambiente"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_button_background"
+                        android:padding="6dp" />
+                </LinearLayout>
+
+                <!-- Spinner de tipo de treino -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/label_tipo_treino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo de treino"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="16sp"
+                        android:gravity="start" />
+
+                    <Spinner
+                        android:id="@+id/spinner_tipo_treino"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/login_button_background"
+                        android:padding="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Segunda linha: percurso -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="start"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:id="@+id/label_percurso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Percurso"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="16sp"
+                    android:gravity="start" />
+
+                <Spinner
+                    android:id="@+id/spinner_percurso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_button_background"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+            <!-- Botões de controlo do treino -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="50dp">
+
+                <!-- Informação sobre o estado da base de dados -->
+                <TextView
+                    android:id="@+id/text_database_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="(Base de dados ainda não carregada)"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:visibility="gone"
+                    android:background="#f5f5f5" />
+
+                <!-- Botão iniciar -->
+                <Button
+                    android:id="@+id/btn_iniciar"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Iniciar"
+                    android:textColor="@color/green_350"
+                    android:background="@drawable/button_green_border"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="25dp" />
+
+                <!-- Botão pausar -->
+                <Button
+                    android:id="@+id/btn_pausar"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pausar"
+                    android:textColor="@color/yellow_350"
+                    android:background="@drawable/button_yellow_border"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:layout_marginBottom="25dp" />
+
+                <!-- Botão terminar -->
+                <Button
+                    android:id="@+id/btn_terminar"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Terminar"
+                    android:textColor="@color/salmon"
+                    android:background="@drawable/button_red_border"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout do pop-up de detalhes de treino.
+    Este layout é utilizado para exibir as informações completas
+    de um treino selecionado pelo utilizador (categoria, data, distância,
+    calorias, tempo, etc.) num formato organizado e visualmente apelativo.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="28dp"
+    android:background="@drawable/popup_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Cabeçalho -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <!-- Categoria -->
+        <TextView
+            android:id="@+id/txtCategoria"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#000000"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <!-- Data -->
+        <TextView
+            android:id="@+id/txtData"
+            android:textColor="#777777"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- Linha de detalhes -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+
+        <!-- Ambiente -->
+        <TextView
+            android:id="@+id/txtAmbiente"
+            android:textSize="16sp"
+            android:textColor="#444"
+            android:layout_marginEnd="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- TipoTreino -->
+        <TextView
+            android:id="@+id/txtTipo"
+            android:textSize="16sp"
+            android:textColor="#444"
+            android:layout_marginEnd="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Percurso -->
+        <TextView
+            android:id="@+id/txtPercurso"
+            android:textSize="16sp"
+            android:textColor="#444"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- Linha 1: Calorias e Distância -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <!-- Icone calorias -->
+            <ImageView
+                android:src="@drawable/ic_flame"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Calorias -->
+            <TextView
+                android:id="@+id/txtCalorias"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <!-- Icone distancia -->
+            <ImageView
+                android:src="@drawable/ic_location"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"/>
+            <!-- Distancia -->
+            <TextView
+                android:id="@+id/txtDistancia"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Linha 2: Tempo e Velocidade -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <!-- Icone duracao -->
+            <ImageView
+                android:src="@drawable/ic_time"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"/>
+            <!-- Duracao -->
+            <TextView
+                android:id="@+id/txtTempo"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <!-- Icone velocidade media -->
+            <ImageView
+                android:src="@drawable/ic_speed"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"/>
+            <!-- Velocidade media -->
+            <TextView
+                android:id="@+id/txtVelocidade"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
